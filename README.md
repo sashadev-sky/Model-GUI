@@ -52,7 +52,7 @@ $ python db_connection.py
   * **Type - Class Docstrings**
     * The docstrings are placed immediately following the class or class
      method indented by one level.
-  * **Format - ReST (reStructuredText) format**
+  * **Format - ReST (reStructuredText)**
     * <pre>
       :param &lt;param_type> &lt;param_name>: &lt;param_description>
       </pre>
