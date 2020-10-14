@@ -57,9 +57,8 @@ $ python db_connection.py
       </pre>
     * <pre>
       :return: &lt;return_description>
-      </pre>
-      <pre>
       :rtype: &lt;return_type>
       </pre>
+
   
 
