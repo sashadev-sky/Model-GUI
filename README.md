@@ -31,8 +31,35 @@ $ python --version  # ensure at least 3.x.x
 $ python db_connection.py
 ```
 
-**Python Concepts (personal use)**
 <hr>
 
--  Docstring (reStructuredText format)
-    - 
+### Python Concepts (personal use)
+
+<hr>
+
+* **Docstring**
+  * Python has the built-in function `help()` that prints out the objects
+   docstring to the console. 
+    * How is this output generated? 
+      1.  Via the `__doc__` property.
+      2. The strategic placement of the string literal directly below the
+       object will automatically set the `__doc__` value.
+  * Type - **Class Docstrings**
+    * The docstrings are placed immediately following the class or class
+     method indented by one level.
+  * Format - **reStructuredText format**
+    * <pre>
+      :param &lt;param_type> &lt;param_name>: &lt;param_description>
+      </pre>
+      <pre>
+      :param &lt;param_name>: &lt;param_description>
+      :type &lt;param_name>: &lt;param_type>
+      </pre>
+    * <pre>
+      :return: &lt;return_description>
+      </pre>
+      <pre>
+      :rtype: &lt;return_type>
+      </pre>
+  
+
