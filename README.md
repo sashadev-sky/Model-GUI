@@ -34,7 +34,7 @@ $ python db_connection.py
 
 <hr>
 
-#### Python Concepts (personal use)
+#### SQLite / Python Concepts (personal use)
 
 <hr>
 
