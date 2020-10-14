@@ -3,6 +3,7 @@ import tkinter
 
 
 class ScrollBox(tkinter.Listbox):
+    """Class to represent a ListBox with a built-in Scrollbar."""
 
     def __init__(self, window, **kwargs):
         super().__init__(window, **kwargs)
@@ -100,6 +101,14 @@ class DataListBox(ScrollBox):
         self.result_fields = result_fields
 
     def re_query(self, link_value=None):
+        """Refresh the data in a DataListBox, clear any sub-selections
+        from a linked DataListBox (if applicable), and clear any displayed
+        result values (if applicable).
+
+        :param int link_value: the id of the foreign key association
+            (default is None)
+        :return: None
+        """
         self.link_value = link_value
         if link_value and self.link_field:
             sql = f'{self.sql_select} WHERE {self.link_field}=? {self.sql_sort}'
@@ -118,6 +127,11 @@ class DataListBox(ScrollBox):
             self.linked_result.set('')
 
     def on_select(self, event):
+        """Logic to run when a DataListBox `<<ListboxSelect>>` event is
+        triggered, which is inherited from tkinter's Listbox.
+
+        :return: None
+        """
         if self.curselection():
             index = self.curselection()[0]
             value = self.get(index),

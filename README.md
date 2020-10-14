@@ -1,22 +1,22 @@
 # GUI Components
 
-- Responsive pair of reusable GUI components made with the Python
+- A responsive pair of reusable GUI components made with the Python
  binding of Tkinter
  
 - Allows visual dataset interrogation
 
-- Demo'ed with SQite3 using the Python `sqlite` module.
+- Demonstrated with SQLite3 using the Python `sqlite` module.
  
 Environment Setup:
 
 - Python 3
 
 ### ScrollBox
-- `ScrollBox`: inherits from `tkinter`s `ListBox` to conveniently combine a
+- `ScrollBox` inherits from `tkinter`s `ListBox` to conveniently combine a
  `ListBox` and a `ScrollBar` together into a single component.
 
 ### DataListBox
-- `DataListBox`: inherits from `ScrollBox` to make it capable of loading its own
+- `DataListBox` inherits from `ScrollBox` to make it capable of loading its own
  data and, optionally, linking to another `DataListBox` or tkinter `Label`.
 
 ## Run the demo
