@@ -33,42 +33,19 @@ class ScrollBox(tkinter.Listbox):
 
 
 class DataListBox(ScrollBox):
-    """Class to represent a ScrollBox that loads in its own data.
-
-    Attributes:
-        window (tkinter.Tk): The root window instance.
-        connection (sqlite3.Connection): The database connection instance.
-        table (str): The table to load the data from.
-        field (str): The table field to display the data from.
-        sort_order (Optional[tuple]): A tuple of 1 or more fields to sort the
-        displayed data by.
-
-    Methods:
-        clear(): Deletes all items in the DataListBox.
-        link(widget, link_field): Create an association to another
-        DataListBox on the specified foreign key field.
-        link_result(text_var, result_fields='*'): Link a DataListBox to a
-        Label that will display the values of the underlying table's passed
-        fields inside of a separate box.
-
-    """
+    """Class to represent a ScrollBox that loads in its own data."""
 
     def __init__(self, window, connection, table, field, sort_order=(),
                  **kwargs):
-        """
-        Constructs a DataListBox widget with the parent 'window'.
+        """Constructs a DataListBox widget with the parent `window`.
 
-        Parameters:
-            window (tkinter.Tk): The root window instance.
-            connection (sqlite3.Connection): The database connection instance.
-            table (str): The table to load the data from.
-            field (str): The table field to display the data from.
-            sort_order (Optional[tuple]): A tuple of 1 or more fields to sort
-            the displayed data by.
-                Will default to the order the data exists in the table.
-
-        Returns:
-            None
+        :param tkinter.Tk window: The root window instance
+        :param sqlite3.Connection connection: The database connection instance
+        :param str table: The table to load the data from
+        :param str field: The table field to display the data from
+        :param tuple sort_order: 1+ fields to sort the displayed data by
+            (default is ())
+        :return: None
         """
         super().__init__(window, **kwargs)
 
@@ -92,44 +69,32 @@ class DataListBox(ScrollBox):
             self.sql_sort = f'ORDER BY {self.field}'
 
     def clear(self):
-        """
-        Deletes all items in the DataListBox.
+        """Deletes all items in the DataListBox.
 
-        Returns:
-            None
+        :return: None
         """
         self.delete(0, tkinter.END)
 
     def link(self, widget, link_field):
-        """
-        Create an association to another DataListBox on the specified
+        """Create an association to another DataListBox on the specified
         foreign key field.
 
-        Parameters:
-            widget (DataListBox): DataListBox to link to.
-            link_field (str): field to link on.
-
-        Returns:
-            None
+        :param DataListBox widget: widget to link to
+        :param str link_field: field to link on
+        :return: None
         """
         self.linked_box = widget
         widget.link_field = link_field
 
     def link_result(self, text_var, result_fields='*'):
-        """
-        Link a DataListBox to a Label that will display the values of the
-        underlying table's passed fields inside of a separate box.
+        """Link a DataListBox to a tkinter Label that will display the values
+        of the underlying table's passed fields inside a separate box.
 
-        Parameters:
-            text_var (tkinter.StringVar): a tkinter StringVar, belonging to
-            the 'textvariable' attribute of a tkinter Label, used to set the
-            value of that Label.
-            result_fields (Optional[tuple]): a tuple of the fields to display
-            values for.
-                Will default to display all fields if not specified.
-
-        Returns:
-            None
+        :param text_var: the 'textvariable' attribute of a tkinter Label
+        :type text_var: tkinter.StringVar
+        :param tuple result_fields: the fields to display values for.
+            (default is all fields)
+        :return: None
         """
         self.linked_result = text_var
         self.result_fields = result_fields
@@ -184,7 +149,6 @@ class DataListBox(ScrollBox):
 
 if __name__ == '__main__':
     conn = sqlite3.connect('painting.db')
-    print(help(DataListBox))
 
     conn.execute('CREATE TABLE IF NOT EXISTS paintings (_id INTEGER PRIMARY '
                  'KEY, title TEXT NOT NULL, year INTEGER, painter_id INTEGER '
