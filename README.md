@@ -37,6 +37,10 @@ $ python db_connection.py
 
 <hr>
 
+* **SQLite** is not client-server. The database server is not
+ running on a remote machine that you connect to; instead everything is
+ running on the same machine.
+
 * **Docstring**
   <blockquote>A docstring is a string literal that occurs as the first
    statement in a module, function, class, or method definition. Such a
