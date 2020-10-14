@@ -1,6 +1,6 @@
+import os
 import sqlite3
 import tkinter
-import os
 
 
 class ScrollBox(tkinter.Listbox):
@@ -218,5 +218,4 @@ if __name__ == '__main__':
 # ===== Main loop =====
 root.mainloop()
 print('closing database connection')
-print(help(DataListBox))
 conn.close()

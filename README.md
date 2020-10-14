@@ -24,12 +24,12 @@ Environment Setup:
 From the root directory, Ubuntu, Linux and Mac users:
 
 ```bash
-$ python3 db_connection.py
+$ python3 project/db_connection.py
 ```
 From the root directory, Windows users:
 ```bash
 $ python --version  # ensure at least 3.x.x
-$ python db_connection.py
+$ python project/db_connection.py
 ```
 
 <hr>
