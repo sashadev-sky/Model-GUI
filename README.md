@@ -27,5 +27,3 @@ From the root directory, Windows users:
 $ python --version  # ensure at least 3.x.x
 $ python db_connection.py
 ```
-
-## API

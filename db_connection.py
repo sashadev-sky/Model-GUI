@@ -33,9 +33,43 @@ class ScrollBox(tkinter.Listbox):
 
 
 class DataListBox(ScrollBox):
+    """Class to represent a ScrollBox that loads in its own data.
+
+    Attributes:
+        window (tkinter.Tk): The root window instance.
+        connection (sqlite3.Connection): The database connection instance.
+        table (str): The table to load the data from.
+        field (str): The table field to display the data from.
+        sort_order (Optional[tuple]): A tuple of 1 or more fields to sort the
+        displayed data by.
+
+    Methods:
+        clear(): Deletes all items in the DataListBox.
+        link(widget, link_field): Create an association to another
+        DataListBox on the specified foreign key field.
+        link_result(text_var, result_fields='*'): Link a DataListBox to a
+        Label that will display the values of the underlying table's passed
+        fields inside of a separate box.
+
+    """
 
     def __init__(self, window, connection, table, field, sort_order=(),
                  **kwargs):
+        """
+        Constructs a DataListBox widget with the parent 'window'.
+
+        Parameters:
+            window (tkinter.Tk): The root window instance.
+            connection (sqlite3.Connection): The database connection instance.
+            table (str): The table to load the data from.
+            field (str): The table field to display the data from.
+            sort_order (Optional[tuple]): A tuple of 1 or more fields to sort
+            the displayed data by.
+                Will default to the order the data exists in the table.
+
+        Returns:
+            None
+        """
         super().__init__(window, **kwargs)
 
         self.linked_box = None
@@ -58,13 +92,45 @@ class DataListBox(ScrollBox):
             self.sql_sort = f'ORDER BY {self.field}'
 
     def clear(self):
+        """
+        Deletes all items in the DataListBox.
+
+        Returns:
+            None
+        """
         self.delete(0, tkinter.END)
 
     def link(self, widget, link_field):
+        """
+        Create an association to another DataListBox on the specified
+        foreign key field.
+
+        Parameters:
+            widget (DataListBox): DataListBox to link to.
+            link_field (str): field to link on.
+
+        Returns:
+            None
+        """
         self.linked_box = widget
         widget.link_field = link_field
 
     def link_result(self, text_var, result_fields='*'):
+        """
+        Link a DataListBox to a Label that will display the values of the
+        underlying table's passed fields inside of a separate box.
+
+        Parameters:
+            text_var (tkinter.StringVar): a tkinter StringVar, belonging to
+            the 'textvariable' attribute of a tkinter Label, used to set the
+            value of that Label.
+            result_fields (Optional[tuple]): a tuple of the fields to display
+            values for.
+                Will default to display all fields if not specified.
+
+        Returns:
+            None
+        """
         self.linked_result = text_var
         self.result_fields = result_fields
 
@@ -118,6 +184,7 @@ class DataListBox(ScrollBox):
 
 if __name__ == '__main__':
     conn = sqlite3.connect('painting.db')
+    print(help(DataListBox))
 
     conn.execute('CREATE TABLE IF NOT EXISTS paintings (_id INTEGER PRIMARY '
                  'KEY, title TEXT NOT NULL, year INTEGER, painter_id INTEGER '
@@ -191,7 +258,7 @@ if __name__ == '__main__':
     # ===== labels =====
     tkinter.Label(root, text='Painters').grid(row=0, column=0)
     tkinter.Label(root, text='Paintings').grid(row=0, column=1)
-    tkinter.Label(root, text='Painting').grid(row=0, column=1)
+    tkinter.Label(root, text='Painting').grid(row=0, column=2)
 
     # ===== Painters Listbox =====
     painter_list = DataListBox(root, conn, "painters", "name")
@@ -208,7 +275,7 @@ if __name__ == '__main__':
 
     painter_list.link(painting_list, "painter_id")
 
-    # ===== Painting Listbox =====
+    # ===== Painting Result =====
     result_text = tkinter.StringVar()
     result = tkinter.Label(root, textvariable=result_text)
     result.grid(row=1, column=2, sticky='nsew', padx=(30, 0))
