@@ -83,7 +83,7 @@ class DataListBox(ScrollBox):
         self.delete(0, tkinter.END)
 
     def link(self, widget, link_field):
-        """Create an association to another DataListBox on the specified
+        """Creates an association to another DataListBox on the specified
         foreign key field.
 
         :param DataListBox widget: widget to link to
@@ -94,7 +94,7 @@ class DataListBox(ScrollBox):
         widget.link_field = link_field
 
     def link_result(self, text_var, result_fields='*'):
-        """Link a DataListBox to a Tkinter Label that will display the values
+        """Links a DataListBox to a Tkinter Label that will display the values
         of the underlying table's passed fields inside a separate box.
 
         :param text_var: the 'textvariable' attribute of a tkinter Label
@@ -107,7 +107,7 @@ class DataListBox(ScrollBox):
         self.result_fields = result_fields
 
     def re_query(self, link_value=None):
-        """Refresh the data in a DataListBox, clear any sub-selections
+        """Refreshes the data in a DataListBox, clear any sub-selections
         from a linked DataListBox (if applicable), and clear any displayed
         result values (if applicable).
 
@@ -133,7 +133,7 @@ class DataListBox(ScrollBox):
             self.linked_result.set('')
 
     def on_select(self, event):
-        """Logic to run when a DataListBox `<<ListboxSelect>>` event is
+        """Runs when a DataListBox `<<ListboxSelect>>` event is
         triggered, which is inherited from Tkinter\'s Listbox.
 
         :return: None
