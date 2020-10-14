@@ -38,6 +38,11 @@ $ python db_connection.py
 <hr>
 
 * **Docstring**
+  <blockquote>A docstring is a string literal that occurs as the first
+   statement in a module, function, class, or method definition. Such a
+    docstring becomes the <code>__doc__</code> special attribute of that object
+    .</blockquote>
+ 
   * Python has the built-in function `help()` that prints out the objects
    docstring to the console. 
     * How is this output generated? 
