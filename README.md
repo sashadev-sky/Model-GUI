@@ -11,11 +11,11 @@ Environment Setup:
 
 - Python 3
 
-## ScrollBox
+### ScrollBox
 - `ScrollBox`: inherits from `tkinter`s `ListBox` to conveniently combine a
  `ListBox` and a `ScrollBar` together into a single component.
 
-## DataListBox
+### DataListBox
 - `DataListBox`: inherits from `ScrollBox` to make it capable of loading its own
  data and, optionally, linking to another `DataListBox` or tkinter `Label`.
 
