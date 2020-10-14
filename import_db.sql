@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS painters;
 
 CREATE TABLE paintings (
     _id INTEGER PRIMARY KEY,
-    title TEXT NOT NULL,
+    title VARCHAR(255) NOT NULL,
     year INTEGER,
     painter_id INTEGER NOT NULL,
 
@@ -16,7 +16,7 @@ CREATE TABLE paintings (
 
 CREATE TABLE painters (
     _id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
+    name VARCHAR(255) NOT NULL,
     birth_year INTEGER
 );
 
