@@ -1,11 +1,11 @@
 # GUI Components
 
 - A responsive pair of reusable GUI components made with Tkinter, the Python
- binding to the Tk GUI toolkit.
+ binding to the Tk GUI toolkit
  
 - Allows visual dataset interrogation
 
-- Demonstrated with SQLite3 using the Python `sqlite` module.
+- Demonstrated with SQLite3
  
 Environment Setup:
 
@@ -13,12 +13,12 @@ Environment Setup:
 - SQLite3
 
 ### ScrollBox
-- `ScrollBox` inherits from `tkinter`s `ListBox` to conveniently combine a
+- `ScrollBox` inherits from Tkinter\'s `ListBox` to conveniently combine a
  `ListBox` and a `ScrollBar` together into a single component.
 
 ### DataListBox
 - `DataListBox` inherits from `ScrollBox` to make it capable of loading its own
- data and, optionally, linking to another `DataListBox` or tkinter `Label`.
+ data and, optionally, linking to another `DataListBox` or Tkinter `Label`.
 
 ## Run the demo
 From the root directory, Ubuntu, Linux and Mac users:

@@ -4,7 +4,7 @@ import os
 
 
 class ScrollBox(tkinter.Listbox):
-    """Class to represent a ListBox with a built-in Scrollbar."""
+    """Class to represent a Tkinter ListBox with a built-in Scrollbar."""
 
     def __init__(self, window, **kwargs):
         super().__init__(window, **kwargs)
