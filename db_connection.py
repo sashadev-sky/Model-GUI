@@ -35,7 +35,12 @@ class ScrollBox(tkinter.Listbox):
 
 
 class DataListBox(ScrollBox):
-    """Class to represent a ScrollBox that loads in its own data."""
+    """Class to represent a ScrollBox that loads in its own data and is
+    capable of linking to another DataListBox or Tkinter Label.
+
+    If linked to another DataListBox, a selection inside a DataListBox
+    triggers data loading in the linked DataListBox.
+    """
 
     def __init__(self, window, connection, table, field, sort_order=(),
                  **kwargs):
@@ -89,7 +94,7 @@ class DataListBox(ScrollBox):
         widget.link_field = link_field
 
     def link_result(self, text_var, result_fields='*'):
-        """Link a DataListBox to a tkinter Label that will display the values
+        """Link a DataListBox to a Tkinter Label that will display the values
         of the underlying table's passed fields inside a separate box.
 
         :param text_var: the 'textvariable' attribute of a tkinter Label
@@ -129,7 +134,7 @@ class DataListBox(ScrollBox):
 
     def on_select(self, event):
         """Logic to run when a DataListBox `<<ListboxSelect>>` event is
-        triggered, which is inherited from tkinter's Listbox.
+        triggered, which is inherited from Tkinter\'s Listbox.
 
         :return: None
         """
@@ -188,19 +193,19 @@ if __name__ == '__main__':
     tkinter.Label(root, text='Painting').grid(row=0, column=2)
 
     # ===== Painters Listbox =====
-    painter_list = DataListBox(root, conn, "painters", "name")
+    painter_list = DataListBox(root, conn, 'painters', 'name')
     painter_list.grid(row=1, column=0, sticky='nsew', rowspan=2, padx=(30, 0))
     painter_list.config(border=2, relief='sunken')
 
     painter_list.re_query()
 
     # ===== Paintings Listbox =====
-    painting_list = DataListBox(root, conn, "paintings", "title",
-                                sort_order=("title",))
+    painting_list = DataListBox(root, conn, 'paintings', 'title',
+                                sort_order=('title',))
     painting_list.grid(row=1, column=1, sticky='nsew', padx=(30, 0))
     painting_list.config(border=2, relief='sunken')
 
-    painter_list.link(painting_list, "painter_id")
+    painter_list.link(painting_list, 'painter_id')
 
     # ===== Painting Result =====
     result_text = tkinter.StringVar()
@@ -208,9 +213,10 @@ if __name__ == '__main__':
     result.grid(row=1, column=2, sticky='nsew', padx=(30, 0))
     result.config(border=2, relief='sunken')
 
-    painting_list.link_result(result_text, ("title", "year"))
+    painting_list.link_result(result_text, ('title', 'year'))
 
 # ===== Main loop =====
 root.mainloop()
 print('closing database connection')
+print(help(DataListBox))
 conn.close()

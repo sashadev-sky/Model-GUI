@@ -1,7 +1,7 @@
 # GUI Components
 
-- A responsive pair of reusable GUI components made with the Python
- binding of Tkinter
+- A responsive pair of reusable GUI components made with Tkinter, the Python
+ binding to the Tk GUI toolkit.
  
 - Allows visual dataset interrogation
 
