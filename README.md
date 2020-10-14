@@ -10,6 +10,7 @@
 Environment Setup:
 
 - Python 3
+- SQLite3
 
 ### ScrollBox
 - `ScrollBox` inherits from `tkinter`s `ListBox` to conveniently combine a
@@ -40,6 +41,10 @@ $ python db_connection.py
 * **SQLite** is not client-server. The database server is not
  running on a remote machine that you connect to; instead everything is
  running on the same machine.
+  * <code>_id INTEGER PRIMARY KEY</code>: some Java classes that
+   Android uses to handle databases actually require an `_id` column (as
+   opposed to `id`) so it's a good habit to get into to use that name for
+    Python also.
 
 * **Docstring**
   <blockquote>A docstring is a string literal that occurs as the first

@@ -1,5 +1,6 @@
 import sqlite3
 import tkinter
+import os
 
 
 class ScrollBox(tkinter.Listbox):
@@ -162,62 +163,10 @@ class DataListBox(ScrollBox):
 
 
 if __name__ == '__main__':
+
+    os.system('cat import_db.sql | sqlite3 painting.db')
+
     conn = sqlite3.connect('painting.db')
-
-    conn.execute('CREATE TABLE IF NOT EXISTS paintings (_id INTEGER PRIMARY '
-                 'KEY, title TEXT NOT NULL, year INTEGER, painter_id INTEGER '
-                 'NOT NULL)')
-
-    conn.execute('CREATE TABLE IF NOT EXISTS painters (_id INTEGER PRIMARY '
-                 'KEY, name TEXT NOT NULL, birth_year INTEGER)')
-
-    conn.commit()
-
-    painters = [
-        ("Claude Monet", 1840),
-        ("Edvard Munch", 1863),
-        ("Rico Lebrun", 1900),
-        ("Betty Parsons", 1900),
-        ("Virginia True", 1900),
-        ("Andy Warhol", 1928),
-        ("Jasper Johns", 1930),
-        ("Robert Rauschenberg", 1925),
-        ("Frank Stella", 1925),
-        ("David Hockney", 1937),
-        ("Mark Rothko", 1903),
-        ("Jackson Pollock", 1912),
-        ("Henri Matisse", 1869)
-    ]
-
-    conn.executemany('INSERT INTO painters(name, birth_year) VALUES(?,?)',
-                     painters).fetchall()
-
-    def get_id_by_name(name):
-        select = f'SELECT * FROM painters WHERE name LIKE \'%{name}\''
-        return conn.execute(select).fetchone()[0]
-
-    paintings = [
-        ("Wisteria", 1925, get_id_by_name("Monet")),
-        ("The Scream", 1893, get_id_by_name("Munch")),
-        ("The Yellow Log", 1912, get_id_by_name("Munch")),
-        ("The Haymaker", 1917, get_id_by_name("Munch")),
-        ("Figure in Rain", 1949, get_id_by_name("Lebrun")),
-        ("Musician", 1940, get_id_by_name("Lebrun")),
-        ("Inferno Series - B", 1961, get_id_by_name("Lebrun")),
-        ("Inferno Series - E", 1961, get_id_by_name("Lebrun")),
-        ("Inferno Series - E", 1961, get_id_by_name("Lebrun")),
-        ("Bright Day", 1966, get_id_by_name("Parsons")),
-        ("Cactus", 1931, get_id_by_name("True")),
-        ("Empire", 1964, get_id_by_name("Warhol")),
-        ("Orange and Yellow", 1956, get_id_by_name("Rothko")),
-        ("Blue Poles", 1952, get_id_by_name("Pollock")),
-        ("Le bonheur de vivre", 1905, get_id_by_name("Matisse")),
-        ("Flag", 1955, get_id_by_name("Johns")),
-        ("White Painting (Three Panel)", 1951, get_id_by_name("Rauschenberg"))
-    ]
-
-    conn.executemany('INSERT INTO paintings(title, year, painter_id) VALUES('
-                     '?,?,?)', paintings)
 
     root = tkinter.Tk()
     root.title('Painting DB Browser')
