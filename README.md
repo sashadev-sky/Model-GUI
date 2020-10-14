@@ -33,7 +33,7 @@ $ python db_connection.py
 
 <hr>
 
-### Python Concepts (personal use)
+#### Python Concepts (personal use)
 
 <hr>
 
@@ -44,10 +44,10 @@ $ python db_connection.py
       1.  Via the `__doc__` property.
       2. The strategic placement of the string literal directly below the
        object will automatically set the `__doc__` value.
-  * Type - **Class Docstrings**
+  * **Type - Class Docstrings**
     * The docstrings are placed immediately following the class or class
      method indented by one level.
-  * Format - **reStructuredText format**
+  * **Format - reStructuredText format**
     * <pre>
       :param &lt;param_type> &lt;param_name>: &lt;param_description>
       </pre>
