@@ -168,8 +168,7 @@ class DataListBox(ScrollBox):
 
 
 if __name__ == '__main__':
-
-    os.system('cat import_db.sql | sqlite3 painting.db')
+    os.system('cat project/import_db.sql | sqlite3 painting.db')
 
     conn = sqlite3.connect('painting.db')
 

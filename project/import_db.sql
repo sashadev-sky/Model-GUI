@@ -5,6 +5,12 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS paintings;
 DROP TABLE IF EXISTS painters;
 
+CREATE TABLE painters (
+    _id INTEGER PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    birth_year INTEGER
+);
+
 CREATE TABLE paintings (
     _id INTEGER PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -12,12 +18,6 @@ CREATE TABLE paintings (
     painter_id INTEGER NOT NULL,
 
     FOREIGN KEY (painter_id) REFERENCES painters(_id)
-);
-
-CREATE TABLE painters (
-    _id INTEGER PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    birth_year INTEGER
 );
 
 INSERT INTO
